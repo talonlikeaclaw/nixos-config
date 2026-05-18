@@ -88,6 +88,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      git
+     spice-vdagent
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
