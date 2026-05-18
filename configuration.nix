@@ -71,15 +71,18 @@
   users.users.talon = {
     isNormalUser = true;
     description = "Talon";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Install zsh shell
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

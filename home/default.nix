@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./ssh.nix ];
+  imports = [
+    ./ssh.nix
+    ./zsh.nix
+  ];
 
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;
