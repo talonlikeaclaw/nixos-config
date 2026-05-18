@@ -87,23 +87,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     bat
-     curl
-     eza
-     fastfetch
-     fd
-     fzf
      git
-     htop
-     jq
-     lazygit
-     neovim
-     ripgrep
-     tldr
-     tree
-     wezterm
-     wget
-     zoxide
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
