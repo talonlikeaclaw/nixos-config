@@ -14,8 +14,17 @@
     };
 
     shellAliases = {
+      c = "clear";
+      cat = "bat -p";
+      glf = ''git log --oneline | fzf --preview="git show {1} | bat --color=always -l diff" | awk "{print \\$1}" | xargs -r git show'';
       lg = "lazygit";
+      n = "clear ; fastfetch";
+      o = "opencode";
+      py = "python3";
+      size = "du -sh";
       szsh = "source ~/.zshrc";
+      v = "nvim";
+      y = "yazi";
     };
 
     initContent = ''
