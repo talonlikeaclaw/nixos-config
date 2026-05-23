@@ -5,6 +5,7 @@
 
   imports = [
     ./ssh.nix
+    ./starship.nix
     ./zsh.nix
   ];
 
@@ -42,7 +43,6 @@
     ripgrep
     rustc
     shellcheck
-    starship
     television
     tldr
     tree
@@ -51,7 +51,7 @@
     wget
     yazi
     zed-editor
-    zoxide
+    
   ];
 
   programs.git = {
@@ -60,6 +60,10 @@
       user.name = "talonlikeaclaw";
       user.email = "talonlikeaclaw@proton.me";
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
   };
 
   programs.neovim = {

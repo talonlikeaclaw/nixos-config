@@ -20,6 +20,7 @@
 
     initContent = ''
       setopt HIST_VERIFY
+      eval "$(tv init zsh)"
     '';
   };
 }
