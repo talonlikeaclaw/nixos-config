@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ./ssh.nix
     ./zsh.nix
