@@ -29,6 +29,7 @@ in
     ./starship.nix
     ./television.nix
     ./wezterm.nix
+    ./zed.nix
     ./zsh.nix
   ];
 
