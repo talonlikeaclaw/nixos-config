@@ -28,13 +28,13 @@ in
     };
     mcp = {
       context7 = {
-        type = "remote";
-        url = "http://127.0.0.1:8811/sse";
+        command = ["npx" "@upstash/context7-mcp"];
+        type = "local";
         enabled = true;
       };
       time = {
-        type = "remote";
-        url = "http://127.0.0.1:8813/sse";
+        command = ["npx" "-y" "@guanxiong/mcp-server-time"];
+        type = "local";
         enabled = true;
       };
       weather = {
