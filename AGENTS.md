@@ -1,6 +1,6 @@
 # NixOS Configuration
 
-Flake-based NixOS config for QEMU/KVM VM. Home-manager integrated as NixOS module.
+Flake-based NixOS config for QEMU/KVM VM. Home-manager as NixOS module.
 
 ## Commands
 
@@ -20,6 +20,19 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 - `home/default.nix` — home-manager entrypoint (user `talon`)
 - `home/opencode.nix` — opencode config (providers, MCP, engram, tui plugins)
 - `home/opencode/engram.ts` — engram plugin source (symlinked to `~/.config/opencode/plugins/`)
+- `home/wezterm.nix` — wezterm config (xdg symlinks to lua files)
+- `home/wezterm/wezterm.lua` — main wezterm config (leader keys, colors, keybindings)
+- `home/wezterm/sessions/mainframe.lua` — wezterm session spawn function
+- `home/fastfetch.nix` — fastfetch config (xdg symlinks to JSONC + ASCII art)
+- `home/fastfetch/eagle.txt` — fastfetch logo file
+- `home/fastfetch/config.jsonc` — fastfetch module config
+- `home/television.nix` — television config (xdg symlinks to TOML files)
+- `home/television/config.toml` — main tv config
+- `home/television/cable/` — custom cable channels (override built-ins by name)
+- `home/zed.nix` — zed editor config (xdg symlinks, font, env var)
+- `home/zed/settings.json` — zed settings (theme, extensions, keybindings)
+- `home/zed/keymap.json` — zed vim keybindings
+- `home/zed/tasks.json` — zed task definitions
 - `home/ssh.nix`, `home/starship.nix`, `home/zsh.nix` — sub-modules
 
 ## Key conventions
@@ -29,6 +42,9 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 - nixpkgs tracks `nixos-unstable`
 - `nixpkgs.config.allowUnfree = true` needed in **both** `configuration.nix` and `home/default.nix` (independent package sets)
 - `system.stateVersion` / `home.stateVersion` are pinned — don't change unless migrating release
+- `home-manager.backupFileExtension = "hm-bak"` in `flake.nix` — existing dotfiles get `.hm-bak` suffix instead of clobber error
+- Programs with home-manager modules (`programs.git`, `programs.bat`, etc.) use those instead of `xdg.configFile`
+- Programs without home-manager modules use `xdg.configFile` for symlink-based config management
 
 ## Building custom packages from source
 
@@ -49,3 +65,6 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 - `engram.ts` sourced from `home/opencode/engram.ts`, symlinked into place
 - Activation script runs `bun install` if `node_modules/` missing
 - Add MCP servers/config in `builtins.toJSON` blocks in `home/opencode.nix`
+- Docker SSE gateway (`docker/mcp-gateway`) has session init race conditions — context7 + time moved to local stdio (`npx` commands)
+- Weather + dockerhub MCPs use different transports, work fine as-is
+- Zed extensions via `auto_install_extensions` in settings.json — auto-installs on launch
