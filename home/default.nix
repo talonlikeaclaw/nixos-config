@@ -23,6 +23,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    ./fastfetch.nix
     ./opencode.nix
     ./ssh.nix
     ./starship.nix
