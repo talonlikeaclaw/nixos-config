@@ -72,7 +72,7 @@
     isNormalUser = true;
     description = "Talon";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -101,6 +101,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  virtualisation.docker.enable = true;
 
   # List services that you want to enable:
 
