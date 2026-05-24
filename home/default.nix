@@ -86,6 +86,7 @@ in
     settings = {
       user.name = "talonlikeaclaw";
       user.email = "talonlikeaclaw@proton.me";
+      init.defaultBranch = "main";
     };
   };
 
