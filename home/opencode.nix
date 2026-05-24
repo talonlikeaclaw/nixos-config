@@ -80,6 +80,11 @@ in
     source = "${engramPlugin}/plugins/engram.ts";
   };
 
+  xdg.configFile."opencode-skills" = {
+    target = "opencode/skills";
+    source = ./opencode/skills;
+  };
+
   home.activation.setupOpencodePlugins = ''
     cd "$HOME/.config/opencode"
 
