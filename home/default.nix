@@ -24,6 +24,7 @@ in
 
   imports = [
     ./fastfetch.nix
+    ./nvim.nix
     ./opencode.nix
     ./ssh.nix
     ./starship.nix
@@ -96,11 +97,4 @@ in
     enable = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    withRuby = false;
-    withPython3 = false;
-  };
-}
+  }

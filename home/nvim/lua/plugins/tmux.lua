@@ -1,0 +1,3 @@
+-- vim-tmux-navigator: seamless <C-hjkl> navigation between Neovim splits and tmux panes
+-- No setup needed - keymaps are created automatically by the plugin
+-- tmux side is already configured via TPM in ~/.dotfiles/tmux/tmux.conf
