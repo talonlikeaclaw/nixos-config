@@ -13,7 +13,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    bat
     beekeeper-studio
     bitwarden-desktop
     bruno
@@ -51,6 +50,13 @@
     zed-editor
     
   ];
+
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "base16";
+    };
+  };
 
   programs.git = {
     enable = true;
