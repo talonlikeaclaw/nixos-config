@@ -27,6 +27,7 @@ in
     ./opencode.nix
     ./ssh.nix
     ./starship.nix
+    ./television.nix
     ./wezterm.nix
     ./zsh.nix
   ];

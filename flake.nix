@@ -19,6 +19,7 @@
 	  home-manager.nixosModules.home-manager
 	  {
 	    home-manager.users.talon = import ./home/default.nix;
+	    home-manager.backupFileExtension = "hm-bak";
 	  }
 	];
       };
