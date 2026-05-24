@@ -4,6 +4,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    ./opencode.nix
     ./ssh.nix
     ./starship.nix
     ./zsh.nix
