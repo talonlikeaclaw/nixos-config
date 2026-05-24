@@ -1,5 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
+let
+  engramPlugin = pkgs.writeTextDir "plugins/engram.ts" (
+    builtins.readFile ./opencode/engram.ts
+  );
+in
 {
   xdg.configFile."opencode/config.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
@@ -63,4 +68,27 @@
       };
     };
   };
+
+  xdg.configFile."opencode/tui.json".text = builtins.toJSON {
+    plugin = [
+      "opencode-subagent-statusline"
+    ];
+  };
+
+  xdg.configFile."opencode-plugins-engram" = {
+    target = "opencode/plugins/engram.ts";
+    source = "${engramPlugin}/plugins/engram.ts";
+  };
+
+  home.activation.setupOpencodePlugins = ''
+    cd "$HOME/.config/opencode"
+
+    if [ ! -f package.json ]; then
+      echo '{"dependencies":{"@opencode-ai/plugin":"1.14.48"}}' > package.json
+    fi
+
+    if [ ! -d node_modules ]; then
+      ${pkgs.bun}/bin/bun install
+    fi
+  '';
 }

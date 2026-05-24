@@ -36,6 +36,7 @@ in
     beekeeper-studio
     bitwarden-desktop
     bruno
+    bun
     cargo
     curl
     docker
