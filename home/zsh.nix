@@ -3,6 +3,20 @@
 {
   programs.zsh = {
     enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "aliases"
+        "colored-man-pages"
+        "copypath"
+        "copyfile"
+        "web-search"
+      ];
+    };
+
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
     history = {
       path = "$HOME/.zsh_history";
       size = 10000;
@@ -31,5 +45,20 @@
       setopt HIST_VERIFY
       eval "$(tv init zsh)"
     '';
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    icons = "always";
+    extraOptions = [
+      "--group-directories-first"
+      "--time-style=long-iso"
+    ];
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

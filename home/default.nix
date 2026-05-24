@@ -20,11 +20,9 @@
     cargo
     curl
     docker
-    eza
     fastfetch
     fd
     filezilla
-    fzf
     gcc
     gnumake
     go
