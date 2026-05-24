@@ -1,5 +1,24 @@
 { pkgs, ... }:
 
+let
+  engram = pkgs.buildGoModule {
+    name = "engram";
+    src = pkgs.fetchFromGitHub {
+      owner = "Gentleman-Programming";
+      repo = "engram";
+      rev = "v1.15.15";
+      hash = "sha256-QtR90b16BC+dVRQFNZy0pAXoX0hb0MCX7ZnIr7JsCNQ=";
+    };
+    vendorHash = "sha256-O+pC4x4DKNUWr7Sx9iZOjK6a64wrQA4/lnjvkNLBX64=";
+    ldflags = [
+      "-s"
+      "-w"
+      "-X main.version=v1.15.15"
+    ];
+    subPackages = [ "cmd/engram" ];
+    doCheck = false;
+  };
+in
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -20,6 +39,7 @@
     cargo
     curl
     docker
+    engram
     fastfetch
     fd
     filezilla
@@ -49,7 +69,6 @@
     wget
     yazi
     zed-editor
-    
   ];
 
   programs.bat = {
