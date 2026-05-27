@@ -11,9 +11,9 @@ in
     provider = {
       "llama.cpp" = {
         npm = "@ai-sdk/openai-compatible";
-        name = "llama.cpp (local)";
+        name = "llama.cpp (host)";
         options = {
-          baseURL = "http://127.0.0.1:12434/v1";
+          baseURL = "http://192.168.122.1:8080/v1";
         };
         models = {
           "qwen3.6-35b" = {
