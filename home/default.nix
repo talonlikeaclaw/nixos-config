@@ -53,6 +53,7 @@ in
     gcc
     gnumake
     go
+    docker-compose
     htop
     jq
     librewolf
@@ -122,6 +123,15 @@ in
   };
 
   programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.btop = {
+    enable = true;
+  };
+
+  programs.lazydocker = {
     enable = true;
   };
 
