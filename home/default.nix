@@ -90,6 +90,34 @@ in
       user.name = "talonlikeaclaw";
       user.email = "talonlikeaclaw@proton.me";
       init.defaultBranch = "main";
+      diff.colorMoved = "default";
+    };
+
+    lfs.enable = true;
+
+    ignores = [
+      "*.swp"
+      "*.swo"
+      "*~"
+      "#*#"
+      "*.log"
+      ".direnv/"
+      ".envrc"
+      ".env*"
+      "node_modules/"
+      ".idea/"
+      ".vscode/"
+    ];
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      navigate = true;
+      side-by-side = true;
+      line-numbers = true;
+      syntax-theme = "Catppuccin Mocha";
     };
   };
 
