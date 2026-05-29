@@ -20,6 +20,7 @@ require('conform').setup({
     markdown   = { 'prettier' },
     bash       = { 'shfmt' },
     sh         = { 'shfmt' },
+    nix        = { 'nixfmt' },
     toml       = { 'taplo' },
     sql        = { 'sql_formatter' },
     -- trim whitespace on anything else

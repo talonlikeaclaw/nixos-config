@@ -44,6 +44,11 @@ in
     harper
     emmet-ls
 
+    nil
+    nixfmt
+    statix
+    deadnix
+
     # Formatters
     stylua
     ruff
