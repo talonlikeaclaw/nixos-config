@@ -24,6 +24,7 @@ in
 
   imports = [
     ./fastfetch.nix
+    ./lazygit.nix
     ./nvim.nix
     ./opencode.nix
     ./ssh.nix
@@ -54,7 +55,6 @@ in
     go
     htop
     jq
-    lazygit
     librewolf
     llama-cpp
     llama-swap
