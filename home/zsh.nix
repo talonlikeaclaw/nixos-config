@@ -28,6 +28,7 @@
     };
 
     shellAliases = {
+      cc = "convco commit -i";
       c = "clear";
       cat = "bat -p";
       glf = ''git log --oneline | fzf --preview="git show {1} | bat --color=always -l diff" | awk "{print \\$1}" | xargs -r git show'';
