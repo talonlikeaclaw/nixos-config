@@ -32,6 +32,15 @@
           }
         ];
       };
+      customCommands = [
+        {
+          key = "<c-c>";
+          description = "Conventional commit";
+          context = "global";
+          command = "convco commit -i";
+          output = "terminal";
+        }
+      ];
     };
   };
 }
