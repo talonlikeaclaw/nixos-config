@@ -89,10 +89,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+environment.systemPackages = with pkgs; [
      git
-     spice-vdagent
-  ];
+   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -110,10 +109,14 @@
 
   # List services that you want to enable:
 
-  # Enable SPICE guest agent for better virt-manager integration
-  services.spice-vdagentd.enable = true;
+  services.xrdp = {
+    enable = true;
+    defaultWindowManager = "startplasma-x11";
+    openFirewall = false;
+  };
 
-  # Enable auto-resize of display
+  security.polkit.enable = true;
+
   services.qemuGuest.enable = true;
 
   # Enable SSH
