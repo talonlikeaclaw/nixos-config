@@ -44,13 +44,16 @@ in
     bruno
     bun
     cargo
+    convco
     curl
+    deadnix
     docker
     engram
     fastfetch
     fd
     filezilla
     gcc
+    gh
     gnumake
     go
     docker-compose
