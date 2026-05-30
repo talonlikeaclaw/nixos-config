@@ -9,8 +9,24 @@ Flake-based NixOS config for QEMU/KVM VM on Proxmox. Home-manager as NixOS modul
 - **Validate flake:** `nix flake check` — must pass before committing
 - **Update all inputs:** `nix flake update`
 - **Update a single input:** `nix flake lock --update-input <input>`
+- **Sync engram:** `engram sync --project nixos-config && git add .engram/`
 
 Run `nix flake check` after any `.nix` edit. New files need `git add` first (flakes use git index).
+
+## Workflow
+
+1. **Search engram** before editing nix files — past bugfixes, decisions, discoveries live there
+2. **Edit** nix files as needed
+3. **Validate** with `nix flake check`
+4. **Apply** with `sudo nixos-rebuild switch --flake .#vm`
+5. **Save memory** (`mem_save`) for any bugfix, decision, discovery, or pattern change
+6. **Sync engram** after saving memories
+
+## Engram
+
+Search engram **before** editing nix files. Key searchable topics: lazygit pagers/output modes, XRDP black screen, MCP SSE race conditions, engram version bumps, catppuccin theming, neovim vim.pack, openCode config pattern, custom package builds.
+
+`engram sync --import` merges `.engram/` chunks into local DB. `engram export` / `engram import` for full JSON backup/merge across machines.
 
 ## Structure
 
@@ -48,36 +64,3 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 - Programs without home-manager modules use `xdg.configFile` for symlink-based config management
 - `hardware-configuration.nix` can be edited for deadnix fixes despite being auto-generated
 - Nix lambda patterns: remove unused params (`config`, `pkgs`, etc.) — `deadnix` linting enforced
-- Lazygit custom command output modes: `terminal` (works for interactive tools like convco), `popup` (breaks TTY), `log`, `logWithPty`, `none`
-- Lazygit pagers config uses `pagers` array format (not `paging` object — lazygit auto-migrates and fails on read-only nix-managed configs)
-
-## XRDP remote desktop
-
-- Access via Remmina (any RDP client) over SSH tunnel — port 3389 **not** exposed to network
-- Must log out of console session before connecting via XRDP (Proxmox noVNC/SPICE), otherwise black screen
-- `security.polkit.enable = true` — helps with concurrent session authorization
-- `defaultWindowManager = "startplasma-x11"` — use X11, not Wayland (XRDP Wayland support unreliable)
-- `openFirewall = false` — RDP tunneled through SSH, no need to expose 3389
-
-## Building custom packages from source
-
-`engram` built via `pkgs.buildGoModule` + `fetchFromGitHub` in `home/default.nix`. Version bump steps:
-
-1. Update `rev` (tag) and `hash` fields
-2. Set `hash` and `vendorHash` to `""`, run `nix flake check` — Nix fails with correct hashes
-3. Replace placeholder hashes with real ones
-4. Update ldflags version string (`-X main.version=vX.Y.Z`) to match tag
-5. `doCheck = false` intentional — sandbox has no `git` binary
-
-## OpenCode config pattern
-
-`home/opencode.nix` uses `xdg.configFile` for `~/.config/opencode/`:
-
-- Config JSONs are nix-managed symlinks — **do not edit manually**
-- `package.json`, `package-lock.json`, `node_modules/` stay mutable for `bun install`
-- `engram.ts` sourced from `home/opencode/engram.ts`, symlinked into place
-- Activation script runs `bun install` if `node_modules/` missing
-- Add MCP servers/config in `builtins.toJSON` blocks in `home/opencode.nix`
-- Docker SSE gateway (`docker/mcp-gateway`) has session init race conditions — context7 + time moved to local stdio (`npx` commands)
-- Weather + dockerhub MCPs use different transports, work fine as-is
-- Zed extensions via `auto_install_extensions` in settings.json — auto-installs on launch
