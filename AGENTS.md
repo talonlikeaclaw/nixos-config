@@ -33,6 +33,7 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 - `home/zed/settings.json` — zed settings (theme, extensions, keybindings)
 - `home/zed/keymap.json` — zed vim keybindings
 - `home/zed/tasks.json` — zed task definitions
+- `home/lazygit.nix` — lazygit config (Catppuccin Mocha theme, delta pager, convco custom command)
 - `home/ssh.nix`, `home/starship.nix`, `home/zsh.nix` — sub-modules
 
 ## Key conventions
@@ -45,6 +46,10 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 - `home-manager.backupFileExtension = "hm-bak"` in `flake.nix` — existing dotfiles get `.hm-bak` suffix instead of clobber error
 - Programs with home-manager modules (`programs.git`, `programs.bat`, etc.) use those instead of `xdg.configFile`
 - Programs without home-manager modules use `xdg.configFile` for symlink-based config management
+- `hardware-configuration.nix` can be edited for deadnix fixes despite being auto-generated
+- Nix lambda patterns: remove unused params (`config`, `pkgs`, etc.) — `deadnix` linting is enforced
+- Lazygit custom command output modes: `terminal` (works for interactive tools like convco), `popup` (breaks TTY), `log`, `logWithPty`, `none`
+- Lazygit pagers config uses `pagers` array format (not `paging` object — lazygit auto-migrates and fails on read-only nix-managed configs)
 
 ## Building custom packages from source
 
