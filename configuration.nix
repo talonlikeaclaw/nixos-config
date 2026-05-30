@@ -104,6 +104,10 @@
 
   virtualisation.docker.enable = true;
 
+  fonts.packages = with pkgs; [
+    maple-mono.NF
+  ];
+
   # List services that you want to enable:
 
   # Enable SPICE guest agent for better virt-manager integration
