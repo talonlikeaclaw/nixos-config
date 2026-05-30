@@ -13,7 +13,7 @@ in
         npm = "@ai-sdk/openai-compatible";
         name = "llama.cpp (host)";
         options = {
-          baseURL = "http://192.168.122.1:8080/v1";
+          baseURL = "http://192.168.0.143:8080/v1";
         };
         models = {
           "qwen3.6-35b" = {
