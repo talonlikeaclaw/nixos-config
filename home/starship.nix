@@ -17,16 +17,59 @@
       custom = {
         coding_dir = {
           when = ''test "$PWD" = "$HOME/Code"'';
-          command = ''echo "📁"'';
+          command = ''echo ""'';
           format = "[$output]($style) ";
         };
       };
       directory = {
-        truncation_length = 0;
-        truncate_to_repo = false;
+        truncate_to_repo = true;
+        format = "[ $path]($style)[$read_only]($read_only_style) ";
+      };
+git_branch = {
+        format = "on [$branch]($style) ";
+        style = "purple";
+        symbol = " ";
+      };
+      git_status = {
+        format = "([$all_status$ahead_behind]($style))";
+        style = "red";
+        conflicted = "🏳 ";
+        ahead = "⇡ ";
+        behind = "⇣ ";
+        diverged = "⇕ ";
+        up_to_date = "";
+        untracked = " ";
+        stashed = "⇄ ";
+        modified = " ";
+        staged = " ";
+        renamed = " ";
+        deleted = "✘ ";
+      };
+      hostname = {
+        ssh_only = true;
+        format = "[$hostname](bold yellow) ";
       };
       lua = {
         detect_folders = [];
+      };
+      nix_shell = {
+        format = "via [$symbol$state]($style) ";
+        symbol = "❄️ ";
+      };
+      nodejs = {
+        format = "via [ $version](bold green) ";
+      };
+      python = {
+        format = "via [ $version](bold blue) ";
+        symbol = " ";
+      };
+      rust = {
+        format = "via [ $version](bold red) ";
+        symbol = " ";
+      };
+      username = {
+        show_always = false;
+        format = "[$user]($style) ";
       };
     };
   };
