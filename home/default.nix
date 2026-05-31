@@ -26,6 +26,7 @@ in
     ./fastfetch.nix
     ./kde.nix
     ./lazygit.nix
+    ./librewolf.nix
     ./nvim.nix
     ./opencode.nix
     ./ssh.nix
@@ -60,7 +61,6 @@ in
     docker-compose
     htop
     jq
-    librewolf
     llama-cpp
     llama-swap
     ncdu
