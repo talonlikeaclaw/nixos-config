@@ -24,6 +24,7 @@ in
 
   imports = [
     ./fastfetch.nix
+    ./kde.nix
     ./lazygit.nix
     ./nvim.nix
     ./opencode.nix
