@@ -24,7 +24,7 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 
 ## Engram
 
-Search engram **before** editing nix files. Key searchable topics: lazygit pagers/output modes, XRDP black screen, MCP SSE race conditions, engram version bumps, catppuccin theming, neovim vim.pack, openCode config pattern, custom package builds.
+Search engram **before** editing nix files. Key searchable topics: lazygit pagers/output modes, XRDP black screen, MCP SSE race conditions, engram version bumps, catppuccin theming, neovim vim.pack, openCode config pattern, custom package builds, plasma-manager KDE config.
 
 `engram sync --import` merges `.engram/` chunks into local DB. `engram export` / `engram import` for full JSON backup/merge across machines.
 
@@ -50,6 +50,7 @@ Search engram **before** editing nix files. Key searchable topics: lazygit pager
 - `home/zed/keymap.json` — zed vim keybindings
 - `home/zed/tasks.json` — zed task definitions
 - `home/lazygit.nix` — lazygit config (Catppuccin Mocha theme, delta pager, convco custom command)
+- `home/kde.nix` — KDE Plasma config (plasma-manager: dark theme, panel, pinned task manager apps)
 - `home/ssh.nix`, `home/starship.nix`, `home/zsh.nix` — sub-modules
 
 ## Key conventions
@@ -64,3 +65,5 @@ Search engram **before** editing nix files. Key searchable topics: lazygit pager
 - Programs without home-manager modules use `xdg.configFile` for symlink-based config management
 - `hardware-configuration.nix` can be edited for deadnix fixes despite being auto-generated
 - Nix lambda patterns: remove unused params (`config`, `pkgs`, etc.) — `deadnix` linting enforced
+- plasma-manager module: use `homeModules.plasma-manager` (not `homeManagerModules` — was renamed)
+- Desktop file names: use exact filenames from `/nix/store/.../share/applications/` (e.g. `systemsettings.desktop`, not `org.kde.systemsettings.desktop`)

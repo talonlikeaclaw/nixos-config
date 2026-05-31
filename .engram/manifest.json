@@ -24,6 +24,14 @@
       "sessions": 0,
       "memories": 0,
       "prompts": 2
+    },
+    {
+      "id": "7f6634b8",
+      "created_by": "talon",
+      "created_at": "2026-05-31T03:11:51Z",
+      "sessions": 2,
+      "memories": 2,
+      "prompts": 10
     }
   ]
 }
