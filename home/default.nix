@@ -51,6 +51,8 @@ in
     deadnix
     docker
     engram
+    nix-output-monitor
+    nix-tree
     fastfetch
     fd
     filezilla
@@ -69,8 +71,10 @@ in
     opencode
     openssl
     pkg-config
+    pgcli
     ripgrep
     rustc
+    sqlite
     shellcheck
     television
     tldr
@@ -138,6 +142,19 @@ in
   programs.lazydocker = {
     enable = true;
   };
+
+  xdg.configFile."pgcli/config".text = ''
+    [main]
+    smart_completion = True
+    multi_line = False
+    multi_line_mode = psql
+    destructive_warning = drop, shutdown, delete, truncate, alter, update, unconditional_update
+    keyring = True
+    row_limit = 1000
+
+    [alias_dsn]
+    dev = postgresql://talonlikeaclaw@192.168.0.212:5432/postgres?client_encoding=utf8
+  '';
 
   fonts.fontconfig = {
     enable = true;
