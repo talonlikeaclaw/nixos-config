@@ -33,6 +33,9 @@
     description = "Talon";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2Lj+2jCHag/Xk/do2laBTiGFxW6ilZ1XkYiPDSYFIw talonlikeaclaw@proton.me"
+    ];
   };
 
   # Install zsh shell
@@ -54,8 +57,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      # TEMP: true for initial install/key-copy. Flip back to false once talon's pubkey is in authorizedKeys.
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
       PermitRootLogin = "no";
       X11Forwarding = false;
     };
