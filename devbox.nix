@@ -8,10 +8,9 @@
       ./devbox-hardware.nix
     ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/vda";
 
   # Enable serial console for Proxmox VNC fallback
   boot.kernelParams = [ "console=ttyS0,115200n8" ];
