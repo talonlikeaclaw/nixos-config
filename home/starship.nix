@@ -23,9 +23,9 @@
       };
       directory = {
         truncate_to_repo = true;
-        format = "[ $path]($style)[$read_only]($read_only_style) ";
+        format = "[  $path]($style)[$read_only]($read_only_style) ";
       };
-git_branch = {
+      git_branch = {
         format = "on [$branch]($style) ";
         style = "purple";
         symbol = " ";
@@ -50,7 +50,7 @@ git_branch = {
         format = "[$hostname](bold yellow) ";
       };
       lua = {
-        detect_folders = [];
+        detect_folders = [ ];
       };
       nix_shell = {
         format = "via [$symbol$state]($style) ";
@@ -74,3 +74,4 @@ git_branch = {
     };
   };
 }
+
