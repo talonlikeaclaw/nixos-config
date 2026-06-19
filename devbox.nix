@@ -3,10 +3,9 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [
-      ./devbox-hardware.nix
-    ];
+  imports = [
+    ./devbox-hardware.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -32,7 +31,11 @@
     isNormalUser = true;
     description = "Talon";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2Lj+2jCHag/Xk/do2laBTiGFxW6ilZ1XkYiPDSYFIw talonlikeaclaw@proton.me"
     ];
@@ -46,8 +49,8 @@
 
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
-     git
-     tailscale
+    git
+    tailscale
   ];
 
   # Enable Docker
@@ -86,7 +89,10 @@
   # NixOS Version
   system.stateVersion = "25.11";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.auto-optimise-store = true;
 
   nix.gc = {
