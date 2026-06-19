@@ -10,7 +10,9 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable serial console for Proxmox VNC fallback
   boot.kernelParams = [ "console=ttyS0,115200n8" ];
@@ -52,7 +54,8 @@
   services.openssh = {
     enable = true;
     settings = {
-      PasswordAuthentication = false;
+      # TEMP: true for initial install/key-copy. Flip back to false once talon's pubkey is in authorizedKeys.
+      PasswordAuthentication = true;
       PermitRootLogin = "no";
       X11Forwarding = false;
     };
