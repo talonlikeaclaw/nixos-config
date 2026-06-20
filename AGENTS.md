@@ -1,11 +1,12 @@
 # NixOS Configuration
 
-Flake-based NixOS config for QEMU/KVM VM on Proxmox. Home-manager as NixOS module. Remote desktop via XRDP over SSH tunnel.
+Dual-host flake config: GUI VM (`vm`) and headless devbox (`devbox`) on Proxmox. Home-manager as NixOS module.
 
 ## Commands
 
-- **Apply config:** `sudo nixos-rebuild switch --flake .#vm`
-- **Test without persisting:** `sudo nixos-rebuild test --flake .#vm`
+- **Apply config (VM):** `sudo nixos-rebuild switch --flake .#vm`
+- **Apply config (devbox):** `sudo nixos-rebuild switch --flake .#devbox`
+- **Test without persisting:** `sudo nixos-rebuild test --flake .#<host>`
 - **Validate flake:** `nix flake check` — must pass before committing
 - **Update all inputs:** `nix flake update`
 - **Update a single input:** `nix flake lock --update-input <input>`
@@ -30,10 +31,13 @@ Search engram **before** editing nix files. Key searchable topics: lazygit pager
 
 ## Structure
 
-- `flake.nix` — flake entrypoint; defines `vm` host
-- `configuration.nix` — system-level NixOS config
+- `flake.nix` — flake entrypoint; defines `vm` and `devbox` hosts
+- `configuration.nix` — system-level NixOS config (GUI VM)
 - `hardware-configuration.nix` — **auto-generated, do not edit** (`nixos-generate-config` to regenerate)
-- `home/default.nix` — home-manager entrypoint (user `talon`)
+- `devbox.nix` — system-level config for headless devbox
+- `devbox-hardware.nix` — **auto-generated, do not edit** (devbox hardware)
+- `home/default.nix` — home-manager entrypoint for GUI VM (user `talon`)
+- `home/devbox.nix` — home-manager entrypoint for devbox (user `talon`)
 - `home/opencode.nix` — opencode config (providers, MCP, engram, tui plugins)
 - `home/opencode/engram.ts` — engram plugin source (symlinked to `~/.config/opencode/plugins/`)
 - `home/wezterm.nix` — wezterm config (xdg symlinks to lua files)
@@ -56,9 +60,9 @@ Search engram **before** editing nix files. Key searchable topics: lazygit pager
 ## Key conventions
 
 - Home-manager is **NixOS module** — do not run `home-manager switch`
-- Flake target `.#vm` — always specify explicitly
+- Flake targets: `.#vm` or `.#devbox` — always specify explicitly
 - nixpkgs tracks `nixos-unstable`
-- `nixpkgs.config.allowUnfree = true` needed in **both** `configuration.nix` and `home/default.nix` (independent package sets)
+- `nixpkgs.config.allowUnfree = true` needed in **all 4 files**: `configuration.nix`, `devbox.nix`, `home/default.nix`, `home/devbox.nix` (independent package sets)
 - `system.stateVersion` / `home.stateVersion` pinned — don't change unless migrating release
 - `home-manager.backupFileExtension = "hm-bak"` in `flake.nix` — existing dotfiles get `.hm-bak` suffix instead of clobber error
 - Programs with home-manager modules (`programs.git`, `programs.bat`, etc.) use those instead of `xdg.configFile`
