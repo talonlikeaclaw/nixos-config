@@ -1,0 +1,9 @@
+[metadata]
+name = "sesh"
+description = "Switch tmux sessions with sesh"
+
+[source]
+command = "sesh list"
+
+[preview]
+command = "echo {}"

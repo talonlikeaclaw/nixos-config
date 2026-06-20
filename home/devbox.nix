@@ -30,8 +30,7 @@ in
     ./ssh.nix
     ./starship.nix
     ./television.nix
-    ./wezterm.nix
-    ./zed.nix
+    ./tmux.nix
     ./zsh.nix
   ];
 
@@ -51,6 +50,7 @@ in
     fd
     gcc
     gh
+    gitmux
     gnumake
     go
     docker-compose
@@ -66,14 +66,14 @@ in
     rustc
     sqlite
     shellcheck
+    sesh
     television
     tldr
+    tmux
     tree
     unzip
-    wezterm
     wget
     yazi
-    zed-editor
   ];
 
   programs.bat = {
@@ -145,11 +145,4 @@ in
     [alias_dsn]
     dev = postgresql://talonlikeaclaw@192.168.0.212:5432/postgres?client_encoding=utf8
   '';
-
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [ "Maple Mono NF" ];
-    };
-  };
 }

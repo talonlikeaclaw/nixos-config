@@ -8,6 +8,9 @@
   xdg.configFile."television/cable/ssh-hosts.toml" = {
     source = ./television/cable/ssh-hosts.toml;
   };
+  xdg.configFile."television/cable/sesh.toml" = {
+    source = ./television/cable/sesh.toml;
+  };
   xdg.configFile."television/cable/bash-history.toml" = {
     source = ./television/cable/bash-history.toml;
   };
