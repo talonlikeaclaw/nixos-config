@@ -62,6 +62,7 @@ in
     openssl
     pkg-config
     pgcli
+    python3
     ripgrep
     rustc
     sqlite
