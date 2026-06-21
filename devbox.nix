@@ -76,11 +76,7 @@
     openFirewall = true;
   };
 
-  # Enable GPG agent with SSH support
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  programs.ssh.startAgent = true;
 
   # Open ports in the firewall
   # networking.firewall.allowedTCPPorts = [ ... ];

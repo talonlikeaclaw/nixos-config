@@ -145,8 +145,5 @@ environment.systemPackages = with pkgs; [
     options = "--delete-older-than 7d";
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  programs.ssh.startAgent = true;
 }
