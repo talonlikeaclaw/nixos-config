@@ -65,7 +65,10 @@
       PasswordAuthentication = false;
       PermitRootLogin = "no";
       X11Forwarding = false;
-      AcceptEnv = [ "COLORTERM" "TERM_PROGRAM" ];
+      AcceptEnv = [
+        "COLORTERM"
+        "TERM_PROGRAM"
+      ];
     };
     openFirewall = true;
   };
@@ -77,6 +80,13 @@
   };
 
   programs.ssh.startAgent = true;
+
+  # Run prebuilt dynamic binaries (codium-server downloaded by the
+  # open-remote-ssh VSCodium extension) on NixOS.
+  programs.nix-ld = {
+    enable = true;
+    libraries = [ pkgs.icu ];
+  };
 
   # Open ports in the firewall
   # networking.firewall.allowedTCPPorts = [ ... ];
