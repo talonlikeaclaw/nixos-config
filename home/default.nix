@@ -41,6 +41,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    ansible
     beekeeper-studio
     bitwarden-desktop
     bruno
@@ -70,6 +71,7 @@ in
     obsidian
     opencode
     openssl
+    opentofu
     pkg-config
     pgcli
     ripgrep

@@ -38,6 +38,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    ansible
     bun
     cargo
     convco
@@ -60,6 +61,7 @@ in
     nodejs_24
     opencode
     openssl
+    opentofu
     pkg-config
     pgcli
     python3
