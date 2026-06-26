@@ -95,6 +95,9 @@
   # Disable the firewall
   # networking.firewall.enable = false;
 
+  # Limit journal size to prevent disk fill
+  services.journald.extraConfig = "SystemMaxUse=500M";
+
   # NixOS Version
   system.stateVersion = "25.11";
 
