@@ -58,6 +58,7 @@ in
     htop
     jq
     ncdu
+    nh
     nodejs_24
     opencode
     openssl

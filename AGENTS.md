@@ -4,9 +4,9 @@ Dual-host flake config: GUI VM (`vm`) and headless devbox (`devbox`) on Proxmox.
 
 ## Commands
 
-- **Apply config (VM):** `sudo nixos-rebuild switch --flake .#vm`
-- **Apply config (devbox):** `sudo nixos-rebuild switch --flake .#devbox`
-- **Test without persisting:** `sudo nixos-rebuild test --flake .#<host>`
+- **Apply config (VM):** `nh os switch . -H vm`
+- **Apply config (devbox):** `nh os switch . -H devbox`
+- **Test without persisting:** `nh os test . -H <host>`
 - **Validate flake:** `nix flake check` — must pass before committing
 - **Update all inputs:** `nix flake update`
 - **Update a single input:** `nix flake lock --update-input <input>`
@@ -19,7 +19,7 @@ Run `nix flake check` after any `.nix` edit. New files need `git add` first (fla
 1. **Search engram** before editing nix files — past bugfixes, decisions, discoveries live there
 2. **Edit** nix files as needed
 3. **Validate** with `nix flake check`
-4. **Apply** with `sudo nixos-rebuild switch --flake .#vm`
+4. **Apply** with `nh os switch . -H vm` (or `-H devbox`)
 5. **Save memory** (`mem_save`) for any bugfix, decision, discovery, or pattern change
 6. **Sync engram** after saving memories
 
