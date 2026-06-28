@@ -8,30 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
-  outputs = { nixpkgs, home-manager, plasma-manager, ... }: {
+  outputs = { nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      # GUI VM
-      vm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-	modules = [
-	  ./configuration.nix
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager.users.talon = import ./home/default.nix;
-	    home-manager.backupFileExtension = "hm-bak";
-	    home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-	  }
-	];
-      };
-
       # Headless Devbox
       devbox = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
