@@ -53,6 +53,7 @@
   environment.systemPackages = with pkgs; [
     git
     tailscale
+    tuxedo
   ];
 
   # Enable Docker
