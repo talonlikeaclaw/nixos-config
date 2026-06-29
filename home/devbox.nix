@@ -37,6 +37,12 @@ in
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;
 
+  home.sessionVariables = {
+    TODO_DIR = "$HOME/Documents/todo";
+    TODO_FILE = "$TODO_DIR/todo.txt";
+    DONE_FILE = "$HOME/Documents/todo/done.txt";
+  };
+
   home.packages = with pkgs; [
     ansible
     bun
