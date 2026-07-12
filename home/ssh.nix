@@ -4,19 +4,19 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
+        AddKeysToAgent = "yes";
       };
       "github.com" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/id_ed25519";
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/id_ed25519";
       };
       "gitlab.com" = {
-        hostname = "gitlab.com";
-        user = "git";
-        identityFile = "~/.ssh/id_ed25519_gitlab";
+        HostName = "gitlab.com";
+        User = "git";
+        IdentityFile = "~/.ssh/id_ed25519_gitlab";
       };
     };
   };
