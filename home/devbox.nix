@@ -48,6 +48,7 @@ in
     bun
     cargo
     convco
+    codex
     curl
     deadnix
     docker
