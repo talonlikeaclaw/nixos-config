@@ -64,6 +64,7 @@ in
     docker-compose
     htop
     jq
+    libwebp
     ncdu
     nh
     nodejs_24
