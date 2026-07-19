@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 let
-  engramPlugin = pkgs.writeTextDir "plugins/engram.ts" (
-    builtins.readFile ./opencode/engram.ts
-  );
+  engramPlugin = pkgs.writeTextDir "plugins/engram.ts" (builtins.readFile ./opencode/engram.ts);
 in
 {
   xdg.configFile."opencode/config.json".text = builtins.toJSON {
@@ -28,12 +26,19 @@ in
     };
     mcp = {
       context7 = {
-        command = ["npx" "@upstash/context7-mcp"];
+        command = [
+          "npx"
+          "@upstash/context7-mcp"
+        ];
         type = "local";
         enabled = true;
       };
       time = {
-        command = ["npx" "-y" "@guanxiong/mcp-server-time"];
+        command = [
+          "npx"
+          "-y"
+          "@guanxiong/mcp-server-time"
+        ];
         type = "local";
         enabled = true;
       };
@@ -50,6 +55,7 @@ in
     };
     permission = {
       websearch = "allow";
+      skill = "deny";
     };
     share = "disabled";
   };
