@@ -60,6 +60,7 @@ in
     gcc
     gh
     gitmux
+    glow
     gnumake
     go
     docker-compose

@@ -96,6 +96,22 @@
       "sessions": 0,
       "memories": 2,
       "prompts": 1
+    },
+    {
+      "id": "b4797f96",
+      "created_by": "talon",
+      "created_at": "2026-07-30T20:59:36Z",
+      "sessions": 0,
+      "memories": 1,
+      "prompts": 1
+    },
+    {
+      "id": "f3086c4c",
+      "created_by": "talon",
+      "created_at": "2026-07-30T21:06:08Z",
+      "sessions": 0,
+      "memories": 2,
+      "prompts": 1
     }
   ]
 }
