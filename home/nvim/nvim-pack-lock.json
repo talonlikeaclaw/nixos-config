@@ -12,6 +12,10 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "herdr-splits.nvim": {
+      "rev": "107273e004e4f7ef07f13c83164d2cb2c51df65d",
+      "src": "https://github.com/lmilojevicc/herdr-splits.nvim"
+    },
     "lazygit.nvim": {
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
       "src": "https://github.com/kdheepak/lazygit.nvim"

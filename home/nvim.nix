@@ -21,9 +21,7 @@ in
 
   home.activation.setupNvimPackLock = ''
     LOCKFILE="$HOME/.config/nvim/nvim-pack-lock.json"
-    if [ ! -f "$LOCKFILE" ]; then
-      cp ${nvimSrc}/nvim-pack-lock.json "$LOCKFILE"
-    fi
+    install -Dm644 ${nvimSrc}/nvim-pack-lock.json "$LOCKFILE"
   '';
 
   home.packages = with pkgs; [

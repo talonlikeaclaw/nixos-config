@@ -66,22 +66,22 @@ in
     command = "herdr-splits.nav-right"
 
     [[keys.command]]
-    key = "alt+h"
+    key = "ctrl+left"
     type = "plugin_action"
     command = "herdr-splits.resize-left"
 
     [[keys.command]]
-    key = "alt+j"
+    key = "ctrl+down"
     type = "plugin_action"
     command = "herdr-splits.resize-down"
 
     [[keys.command]]
-    key = "alt+k"
+    key = "ctrl+up"
     type = "plugin_action"
     command = "herdr-splits.resize-up"
 
     [[keys.command]]
-    key = "alt+l"
+    key = "ctrl+right"
     type = "plugin_action"
     command = "herdr-splits.resize-right"
 
