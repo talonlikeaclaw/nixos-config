@@ -32,6 +32,8 @@ in
     previous_tab = ["prefix+p", "shift+left", "alt+shift+h"]
     next_tab = ["prefix+n", "shift+right", "alt+shift+l"]
     rename_tab = "prefix+shift+,"
+    navigate_workspace_down = "j"
+    navigate_workspace_up = "k"
 
     [[keys.command]]
     key = "prefix+f"
