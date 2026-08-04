@@ -1,9 +1,9 @@
-local vault = vim.fn.expand('~/Documents/Obsidian/TalonsBrain')
+local vault = vim.fn.expand('~/Documents/Obsidian/talon')
 if vim.fn.isdirectory(vault) == 0 then return end
 
 require('obsidian').setup({
   workspaces = {
-    { name = 'TalonsBrain', path = vim.fn.expand('~/Documents/Obsidian/TalonsBrain') },
+    { name = 'talon', path = vim.fn.expand('~/Documents/Obsidian/talon') },
   },
 
   picker = { name = 'mini.pick' },

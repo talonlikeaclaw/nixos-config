@@ -80,6 +80,19 @@
     openFirewall = true;
   };
 
+  # Keep the Git repository on devbox while Syncthing distributes vault files.
+  # Devices and folder sharing are managed in the local Syncthing UI.
+  services.syncthing = {
+    enable = true;
+    user = "talon";
+    dataDir = "/home/talon";
+    configDir = "/home/talon/.config/syncthing";
+    guiAddress = "127.0.0.1:8384";
+    openDefaultPorts = true;
+    overrideDevices = false;
+    overrideFolders = false;
+  };
+
   programs.ssh.startAgent = true;
 
   # Run prebuilt dynamic binaries (codium-server downloaded by the
