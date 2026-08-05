@@ -88,6 +88,7 @@ in
     unzip
     wget
     yazi
+    yq
   ];
 
   programs.bat = {
