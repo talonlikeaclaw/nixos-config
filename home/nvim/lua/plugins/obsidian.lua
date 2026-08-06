@@ -8,6 +8,14 @@ require('obsidian').setup({
 
   picker = { name = 'mini.pick' },
   legacy_commands = false,
+  frontmatter = {
+    func = function(note)
+      local out = vim.deepcopy(note.metadata or {})
+      if #note.aliases > 0 then out.aliases = note.aliases end
+      if #note.tags > 0 then out.tags = note.tags end
+      return out
+    end,
+  },
   link = {
     wiki = function(opts)
       return string.format('[[%s]]', opts.label)
