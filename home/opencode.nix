@@ -78,6 +78,12 @@ in
     };
   };
 
+  xdg.configFile."opencode/package.json".text = builtins.toJSON {
+    dependencies = {
+      "@opencode-ai/plugin" = "1.18.16";
+    };
+  };
+
   xdg.configFile."opencode/tui.json".text = builtins.toJSON {
     plugin = [
       "opencode-subagent-statusline"
@@ -97,11 +103,8 @@ in
   home.activation.setupOpencodePlugins = ''
     cd "$HOME/.config/opencode"
 
-    if [ ! -f package.json ]; then
-      echo '{"dependencies":{"@opencode-ai/plugin":"1.14.48"}}' > package.json
-    fi
-
-    if [ ! -d node_modules ]; then
+    if [ ! -f node_modules/@opencode-ai/plugin/package.json ] ||
+      [ "$(${pkgs.jq}/bin/jq -r .version node_modules/@opencode-ai/plugin/package.json)" != "1.18.16" ]; then
       ${pkgs.bun}/bin/bun install
     fi
   '';

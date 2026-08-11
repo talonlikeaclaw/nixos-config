@@ -168,6 +168,46 @@
       "sessions": 2,
       "memories": 4,
       "prompts": 5
+    },
+    {
+      "id": "d69a187b",
+      "created_by": "talon",
+      "created_at": "2026-08-11T18:53:28Z",
+      "sessions": 1,
+      "memories": 3,
+      "prompts": 1
+    },
+    {
+      "id": "66903cc9",
+      "created_by": "talon",
+      "created_at": "2026-08-11T19:02:54Z",
+      "sessions": 2,
+      "memories": 3,
+      "prompts": 3
+    },
+    {
+      "id": "861e4d72",
+      "created_by": "talon",
+      "created_at": "2026-08-11T19:14:46Z",
+      "sessions": 1,
+      "memories": 2,
+      "prompts": 1
+    },
+    {
+      "id": "d5829d0d",
+      "created_by": "talon",
+      "created_at": "2026-08-11T19:36:07Z",
+      "sessions": 1,
+      "memories": 2,
+      "prompts": 1
+    },
+    {
+      "id": "bd2213ec",
+      "created_by": "talon",
+      "created_at": "2026-08-11T19:48:38Z",
+      "sessions": 1,
+      "memories": 3,
+      "prompts": 2
     }
   ]
 }
