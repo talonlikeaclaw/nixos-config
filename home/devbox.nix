@@ -76,6 +76,7 @@ in
     pkg-config
     pgcli
     python3
+    python3Packages.pytest
     ripgrep
     rustc
     sqlite
