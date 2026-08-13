@@ -48,7 +48,6 @@ in
     ansible
     bun
     cargo
-    convco
     codex
     curl
     deadnix
