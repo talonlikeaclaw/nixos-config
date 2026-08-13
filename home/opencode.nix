@@ -34,7 +34,7 @@ in
           "mudler/KAT-Coder-V2.5-Dev-APEX-GGUF" = {
             name = "KAT-Coder V2.5 Dev APEX";
             limit = {
-              context = 65536;
+              context = 131072;
               output = 4096;
             };
           };
