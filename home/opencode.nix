@@ -23,6 +23,23 @@ in
           };
         };
       };
+      unsloth = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Unsloth Studio";
+        options = {
+          baseURL = "http://192.168.0.30:8888/v1";
+          apiKey = "{env:UNSLOTH_STUDIO_AUTH_TOKEN}";
+        };
+        models = {
+          "mudler/KAT-Coder-V2.5-Dev-APEX-GGUF" = {
+            name = "KAT-Coder V2.5 Dev APEX";
+            limit = {
+              context = 65536;
+              output = 4096;
+            };
+          };
+        };
+      };
     };
     mcp = {
       context7 = {

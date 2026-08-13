@@ -208,6 +208,14 @@
       "sessions": 1,
       "memories": 3,
       "prompts": 2
+    },
+    {
+      "id": "6d3c5962",
+      "created_by": "talon",
+      "created_at": "2026-08-13T02:30:54Z",
+      "sessions": 5,
+      "memories": 17,
+      "prompts": 19
     }
   ]
 }
