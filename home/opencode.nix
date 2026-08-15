@@ -7,22 +7,6 @@ in
   xdg.configFile."opencode/config.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
     provider = {
-      "llama.cpp" = {
-        npm = "@ai-sdk/openai-compatible";
-        name = "llama.cpp (host)";
-        options = {
-          baseURL = "http://192.168.0.143:8080/v1";
-        };
-        models = {
-          "qwen3.6-35b" = {
-            name = "Qwen3.6 35B-A3B Q4_K_XL";
-            limit = {
-              context = 131072;
-              output = 32768;
-            };
-          };
-        };
-      };
       unsloth = {
         npm = "@ai-sdk/openai-compatible";
         name = "Unsloth Studio";
@@ -34,7 +18,7 @@ in
           "mudler/KAT-Coder-V2.5-Dev-APEX-GGUF" = {
             name = "KAT-Coder V2.5 Dev APEX";
             limit = {
-              context = 131072;
+              context = 262144;
               output = 4096;
             };
           };
