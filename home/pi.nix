@@ -17,6 +17,20 @@
         "openrouter/openai/gpt-5.6-terra:medium"
         "unsloth/mudler/KAT-Coder-V2.5-Dev-APEX-GGUF:off"
       ];
+      packages = [
+        "npm:@gotgenes/pi-permission-system@25.3.0"
+        "npm:pi-web-access@0.23.0"
+        "npm:@dietrichgebert/ponytail@4.9.0"
+        "npm:pi-open-tui@0.2.12"
+        "npm:pi-hermes-memory@0.9.5"
+        "npm:pi-lens@4.0.0"
+        "npm:pi-subagents@0.50.0"
+        "npm:pi-markdown-preview@0.14.1"
+      ];
+    };
+
+    ".pi/web-search.json".text = builtins.toJSON {
+      workflow = "none";
     };
 
     ".pi/agent/AGENTS.md".text = ''
@@ -66,7 +80,61 @@
     '';
 
     ".pi/agent/skills".source = ./opencode/skills;
-    ".pi/agent/extensions/permission-gate.ts".source = ./pi/permission-gate.ts;
+    ".pi/agent/extensions/pi-permission-system/config.json".text = builtins.toJSON {
+      "$schema" = "https://raw.githubusercontent.com/gotgenes/pi-packages/main/packages/pi-permission-system/schemas/permissions.schema.json";
+      permissionReviewLog = false;
+      yoloMode = false;
+      doublePressToConfirm = true;
+      permission = {
+        "*" = "allow";
+        path = {
+          "*" = "allow";
+          "*.env" = "deny";
+          "*.env.*" = "deny";
+          "*.env.example" = "allow";
+          ".git" = "deny";
+          ".git/*" = "deny";
+          "*/.git/*" = "deny";
+          "*secrets*" = "deny";
+          "*credential*" = "deny";
+          "*password*" = "deny";
+          "*passwd*" = "deny";
+          "*.pem" = "deny";
+          "*.key" = "deny";
+          "*.p12" = "deny";
+          "*.pfx" = "deny";
+          "~/.ssh/*" = "deny";
+          "/etc/ssh/*" = "deny";
+          "/nix/store/*" = "deny";
+          "/run/secrets/*" = "deny";
+        };
+        read = "allow";
+        write = "ask";
+        edit = "ask";
+        bash = {
+          "*" = "allow";
+          "git *" = "ask";
+          "git status *" = "allow";
+          "git diff *" = "allow";
+          "git log *" = "allow";
+          "git show *" = "allow";
+          "git rev-parse *" = "allow";
+          "git ls-files *" = "allow";
+          "rm *" = "ask";
+          "sudo *" = "ask";
+          "chmod *" = "ask";
+          "chown *" = "ask";
+          "mkfs *" = "ask";
+          "dd *" = "ask";
+          "shutdown *" = "ask";
+          "reboot *" = "ask";
+          "poweroff *" = "ask";
+          "halt *" = "ask";
+        };
+        mcp = "ask";
+        external_directory = "ask";
+      };
+    };
 
     ".pi/agent/models.json".text = builtins.toJSON {
       providers = {
