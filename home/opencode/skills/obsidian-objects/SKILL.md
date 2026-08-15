@@ -1,6 +1,7 @@
 ---
 name: obsidian-objects
 description: Use when creating, editing, or organizing typed notes in Obsidian vault at /home/talon/Documents/Obsidian/talon, especially when defining new object types, creating YAML frontmatter, or building Bases
+disable-model-invocation: true
 ---
 
 # Obsidian Object Model
