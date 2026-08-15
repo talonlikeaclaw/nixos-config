@@ -28,6 +28,7 @@ in
     ./lazygit.nix
     ./nvim.nix
     ./opencode.nix
+    ./pi.nix
     ./ssh.nix
     ./starship.nix
     ./television.nix
