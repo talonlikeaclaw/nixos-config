@@ -29,7 +29,6 @@
           system = "x86_64-linux";
           modules = [
             ./devbox.nix
-            ./devbox-hardware.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.users.talon = import ./home/devbox.nix;

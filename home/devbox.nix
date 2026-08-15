@@ -51,9 +51,9 @@ in
     cargo
     codex
     curl
-    deadnix
     docker
     engram
+    fastfetch
     nix-output-monitor
     nix-tree
     fd
@@ -84,7 +84,6 @@ in
     sesh
     television
     tldr
-    tmux
     tree
     unzip
     wget

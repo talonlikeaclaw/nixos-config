@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  engramPlugin = pkgs.writeTextDir "plugins/engram.ts" (builtins.readFile ./opencode/engram.ts);
-in
 {
   xdg.configFile."opencode/config.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
@@ -42,16 +39,6 @@ in
         ];
         type = "local";
         enabled = true;
-      };
-      weather = {
-        type = "remote";
-        url = "http://127.0.0.1:8812/mcp";
-        enabled = false;
-      };
-      dockerhub = {
-        type = "remote";
-        url = "http://127.0.0.1:8814/sse";
-        enabled = false;
       };
     };
     permission = {
@@ -93,7 +80,7 @@ in
 
   xdg.configFile."opencode-plugins-engram" = {
     target = "opencode/plugins/engram.ts";
-    source = "${engramPlugin}/plugins/engram.ts";
+    source = ./opencode/engram.ts;
   };
 
   xdg.configFile."opencode-skills" = {

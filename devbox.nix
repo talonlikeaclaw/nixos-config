@@ -102,13 +102,6 @@
     libraries = [ pkgs.icu ];
   };
 
-  # Open ports in the firewall
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-
-  # Disable the firewall
-  # networking.firewall.enable = false;
-
   # Limit journal size to prevent disk fill
   services.journald.extraConfig = "SystemMaxUse=500M";
 
