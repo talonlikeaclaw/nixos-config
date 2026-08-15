@@ -66,6 +66,7 @@
     '';
 
     ".pi/agent/skills".source = ./opencode/skills;
+    ".pi/agent/extensions/permission-gate.ts".source = ./pi/permission-gate.ts;
 
     ".pi/agent/models.json".text = builtins.toJSON {
       providers = {
@@ -75,7 +76,10 @@
               id = "openai/gpt-5.6-terra";
               name = "GPT-5.6 Terra";
               reasoning = true;
-              input = [ "text" "image" ];
+              input = [
+                "text"
+                "image"
+              ];
               contextWindow = 272000;
               maxTokens = 128000;
             }
