@@ -1,5 +1,30 @@
 { pkgs, ... }:
 
+let
+  piSkills = [
+    "brainstorming"
+    "caveman"
+    "caveman-commit"
+    "caveman-compress"
+    "caveman-help"
+    "caveman-review"
+    "compress"
+    "dispatching-parallel-agents"
+    "executing-plans"
+    "find-skills"
+    "finishing-a-development-branch"
+    "frontend-design"
+    "obsidian-objects"
+    "receiving-code-review"
+    "requesting-code-review"
+    "skill-creator"
+    "subagent-driven-development"
+    "systematic-debugging"
+    "test-driven-development"
+    "using-git-worktrees"
+    "writing-plans"
+  ];
+in
 {
   home.packages = [ pkgs.pi-coding-agent ];
 
@@ -18,7 +43,7 @@
         "unsloth/mudler/KAT-Coder-V2.5-Dev-APEX-GGUF:off"
       ];
       packages = [
-        "npm:@gotgenes/pi-permission-system@25.3.0"
+        "npm:@gotgenes/pi-permission-system@25.4.0"
         "npm:pi-web-access@0.23.0"
         "npm:@dietrichgebert/ponytail@4.9.0"
         "npm:pi-open-tui@0.2.12"
@@ -79,7 +104,38 @@
       Read the relevant project instructions and existing code first. Make the smallest correct change, run appropriate validation, and summarize the changes and validation results.
     '';
 
-    ".pi/agent/skills".source = ./opencode/skills;
+    ".pi/agent/open-tui.json".text = builtins.toJSON {
+      enabled = true;
+      settingsLanguage = "en";
+      icons.mode = "auto";
+      footerSegments = {
+        cwd = true;
+        sessionName = false;
+        gitBranch = true;
+        gitStatus = true;
+        gitCommit = false;
+        runtime = true;
+        context = true;
+        tokens = true;
+        cost = true;
+        extensionStatuses = true;
+      };
+      telemetry = {
+        enabled = true;
+        tps = true;
+        ttft = true;
+        duration = true;
+        tokens = true;
+        stalls = true;
+        cost = true;
+      };
+    };
+
+    ".pi/agent/skills".source = pkgs.linkFarm "pi-skills" (map (skill: {
+      name = skill;
+      path = ./opencode/skills/${skill};
+    }) piSkills);
+
     ".pi/agent/extensions/pi-permission-system/config.json".text = builtins.toJSON {
       "$schema" = "https://raw.githubusercontent.com/gotgenes/pi-packages/main/packages/pi-permission-system/schemas/permissions.schema.json";
       permissionReviewLog = false;
@@ -105,14 +161,13 @@
           "*.pfx" = "deny";
           "~/.ssh/*" = "deny";
           "/etc/ssh/*" = "deny";
-          "/nix/store/*" = "deny";
           "/run/secrets/*" = "deny";
         };
         read = "allow";
         write = "ask";
         edit = "ask";
         bash = {
-          "*" = "allow";
+          "*" = "ask";
           "git *" = "ask";
           "git status *" = "allow";
           "git diff *" = "allow";
