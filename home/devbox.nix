@@ -26,9 +26,9 @@ in
     ./fastfetch.nix
     ./herdr.nix
     ./lazygit.nix
+    ./little-coder.nix
     ./nvim.nix
     ./opencode.nix
-    ./pi.nix
     ./ssh.nix
     ./starship.nix
     ./television.nix
