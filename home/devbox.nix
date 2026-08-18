@@ -28,6 +28,7 @@ in
     ./lazygit.nix
     ./little-coder.nix
     ./nvim.nix
+    ./omp.nix
     ./opencode.nix
     ./ssh.nix
     ./starship.nix

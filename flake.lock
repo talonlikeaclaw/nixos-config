@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787080053,
+        "narHash": "sha256-Up/e+uHPJn6Y9M+snMQ+lERPg5Z2Odz9UFZtCDUIkfc=",
+        "owner": "talonlikeaclaw",
+        "repo": "dotfiles",
+        "rev": "14d21357b6525489dc2eb93b3abe79ae7099811c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "talonlikeaclaw",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "herdr": {
       "inputs": {
         "nixpkgs": [
@@ -60,6 +76,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "herdr": "herdr",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"

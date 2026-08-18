@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ dotfiles, pkgs, ... }:
 
 {
   programs.tmux = {
@@ -102,5 +102,5 @@
   };
 
   # gitmux config for catppuccin status bar git module
-  home.file.".gitmux.toml".source = ./tmux/gitmux.toml;
+  home.file.".gitmux.toml".source = "${dotfiles}/gitmux/.gitmux.conf";
 }

@@ -13,6 +13,11 @@
       url = "github:herdrdev/herdr/v0.8.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dotfiles = {
+      url = "github:talonlikeaclaw/dotfiles";
+      flake = false;
+    };
   };
 
   outputs =
@@ -20,6 +25,7 @@
       nixpkgs,
       home-manager,
       herdr,
+      dotfiles,
       ...
     }:
     {
@@ -32,7 +38,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.users.talon = import ./home/devbox.nix;
-              home-manager.extraSpecialArgs = { inherit herdr; };
+              home-manager.extraSpecialArgs = { inherit herdr dotfiles; };
               home-manager.backupFileExtension = "hm-bak";
             }
           ];
