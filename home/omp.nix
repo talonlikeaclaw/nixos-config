@@ -17,9 +17,23 @@ in
 {
   home.packages = [ omp ];
 
-  home.file = {
-    ".omp/agent/config.yml".source = "${dotfiles}/omp/.omp/agent/config.yml";
-  } // lib.optionalAttrs (builtins.pathExists "${dotfiles}/omp/.omp/agent/mcp.json") {
+  home.file = lib.optionalAttrs (builtins.pathExists "${dotfiles}/omp/.omp/agent/mcp.json") {
     ".omp/agent/mcp.json".source = "${dotfiles}/omp/.omp/agent/mcp.json";
   };
+
+  # OMP writes preferences atomically; a Home Manager source link points into
+  # /nix/store and therefore cannot serve as its live configuration file.
+  home.activation.installOmpConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    config="$HOME/.omp/agent/config.yml"
+
+    if [ -L "$config" ]; then
+      rm "$config"
+    fi
+
+    if [ ! -e "$config" ]; then
+      mkdir -p "$(dirname "$config")"
+      cp "${dotfiles}/omp/.omp/agent/config.yml" "$config"
+      chmod u+w "$config"
+    fi
+  '';
 }

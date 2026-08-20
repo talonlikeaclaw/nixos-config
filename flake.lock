@@ -3,11 +3,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1787162179,
-        "narHash": "sha256-synxIcJusaMzGCxcCKoQap0gZxCgogmWAil78ZlvOW8=",
+        "lastModified": 1787243307,
+        "narHash": "sha256-tZ5v8pbT/+XkUg8az5p5rsSE6yskVJVyA327jxNH+Dk=",
         "owner": "talonlikeaclaw",
         "repo": "dotfiles",
-        "rev": "c7f6832797ecfa0090929667dd6d27ae0d160495",
+        "rev": "baefab64c6d5ce6ccfbf53c916155b7ac07b9dc1",
         "type": "github"
       },
       "original": {
@@ -90,11 +90,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783577481,
-        "narHash": "sha256-EWMxOWrJ031f8f/lrcEmhTRs4npw1/5N3Hcjin846c8=",
+        "lastModified": 1787108576,
+        "narHash": "sha256-WLhxXPMCzbeufsDZxdzkurLGBq74GX+JgLX8fFy6HZs=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "4cdea398dc491b082dccdce0fad1ed0b75fa3394",
+        "rev": "99607a06c2ea1290cd3258c11d1416dde9201f94",
         "type": "github"
       },
       "original": {
