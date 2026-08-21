@@ -78,6 +78,7 @@ in
     pgcli
     python3
     python3Packages.pytest
+    python3Packages.debugpy
     ripgrep
     rustc
     sqlite
