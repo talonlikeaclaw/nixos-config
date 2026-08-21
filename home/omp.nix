@@ -3,10 +3,10 @@
 let
   omp = pkgs.stdenvNoCC.mkDerivation {
     pname = "omp";
-    version = "17.3.8";
+    version = "17.4.2";
     src = pkgs.fetchurl {
-      url = "https://github.com/can1357/oh-my-pi/releases/download/v17.3.8/omp-linux-x64";
-      hash = "sha256-79tU8AVOgK/hwFwJ9D1c7QnOjsi3XD+2sMpc5IBbOD8=";
+      url = "https://github.com/can1357/oh-my-pi/releases/download/v17.4.2/omp-linux-x64";
+      hash = "sha256-IYqGhMKxEla0fii6ExrfsqA+mI7d2FZ72Da3xR3QIAU=";
     };
     dontUnpack = true;
     installPhase = ''
