@@ -272,6 +272,14 @@
       "sessions": 0,
       "memories": 1,
       "prompts": 0
+    },
+    {
+      "id": "97fd82fb",
+      "created_by": "talon",
+      "created_at": "2026-08-26T19:26:59Z",
+      "sessions": 5,
+      "memories": 29,
+      "prompts": 16
     }
   ]
 }
