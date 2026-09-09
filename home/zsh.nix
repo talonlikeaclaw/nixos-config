@@ -44,6 +44,16 @@
     initContent = ''
       setopt HIST_VERIFY
       eval "$(tv init zsh)"
+
+      # Auto-load the homelab key into the SSH agent. Runs on every new shell,
+      # but only prompts (once per agent session) when the key isn't loaded yet.
+      if [[ -S "$SSH_AUTH_SOCK" ]] && [[ -f "$HOME/.ssh/id_ed25519_homelab" ]]; then
+        _homelab_fp="$(ssh-keygen -lf "$HOME/.ssh/id_ed25519_homelab" 2>/dev/null | awk '{print $2}')"
+        if [[ -n "$_homelab_fp" ]] && ! ssh-add -l 2>/dev/null | grep -qF "$_homelab_fp"; then
+          ssh-add "$HOME/.ssh/id_ed25519_homelab"
+        fi
+        unset _homelab_fp
+      fi
     '';
   };
 
