@@ -1,14 +1,19 @@
 { dotfiles, lib, pkgs, ... }:
 
 let
+  version = "18.1.12";
+
   omp = pkgs.stdenvNoCC.mkDerivation {
     pname = "omp";
-    version = "18.0.6";
+    inherit version;
+
     src = pkgs.fetchurl {
-      url = "https://github.com/can1357/oh-my-pi/releases/download/v18.0.6/omp-linux-x64";
-      hash = "sha256-nLx4vpumNXtTpqBVyYrXr+5MANIKMg1Ru3apSbilpEQ=";
+      url = "https://github.com/can1357/oh-my-pi/releases/download/v${version}/omp-linux-x64";
+      hash = "sha256-9UMQCPcdLzlxYXIFz86csifB0TVmWTAIgkTHbYay+0I=";
     };
+
     dontUnpack = true;
+
     installPhase = ''
       install -Dm755 "$src" "$out/bin/omp"
     '';

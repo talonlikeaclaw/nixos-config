@@ -103,7 +103,7 @@
   };
 
   # Limit journal size to prevent disk fill
-  services.journald.extraConfig = "SystemMaxUse=500M";
+  services.journald.settings.Journal.SystemMaxUse = "500M";
 
   # NixOS Version
   system.stateVersion = "25.11";
