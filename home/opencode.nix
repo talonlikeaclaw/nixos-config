@@ -68,7 +68,7 @@
 
   xdg.configFile."opencode/package.json".text = builtins.toJSON {
     dependencies = {
-      "@opencode-ai/plugin" = "1.18.16";
+      "@opencode-ai/plugin" = "1.18.31";
     };
   };
 
@@ -92,7 +92,7 @@
     cd "$HOME/.config/opencode"
 
     if [ ! -f node_modules/@opencode-ai/plugin/package.json ] ||
-      [ "$(${pkgs.jq}/bin/jq -r .version node_modules/@opencode-ai/plugin/package.json)" != "1.18.16" ]; then
+      [ "$(${pkgs.jq}/bin/jq -r .version node_modules/@opencode-ai/plugin/package.json)" != "1.18.31" ]; then
       ${pkgs.bun}/bin/bun install
     fi
   '';

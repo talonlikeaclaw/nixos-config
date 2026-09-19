@@ -181,8 +181,9 @@ function stripPrivateTags(str: string): string {
 // ─── Plugin Export ───────────────────────────────────────────────────────────
 
 export const Engram: Plugin = async (ctx) => {
-  const oldProject = ctx.directory.split("/").pop() ?? "unknown"
-  const project = extractProjectName(ctx.directory)
+  // Resolved below via the server's canonical resolution; the local heuristic
+  // is only the fallback for when the server is unreachable.
+  let project = extractProjectName(ctx.directory)
 
   // Track tool counts per session (in-memory only, not critical)
   const toolCounts = new Map<string, number>()
@@ -232,13 +233,15 @@ export const Engram: Plugin = async (ctx) => {
     }
   }
 
-  // Migrate project name if it changed (one-time, idempotent)
-  // Must run AFTER server startup to ensure the endpoint is available
-  if (oldProject !== project) {
-    await engramFetch("/projects/migrate", {
-      method: "POST",
-      body: { old_project: oldProject, new_project: project },
-    })
+  // Resolve the project the way Engram itself does (explicit config,
+  // ENGRAM_PROJECT, git metadata, cwd). Engram 2.0 removed the project-rename
+  // endpoint (`POST /projects/migrate` now rescues NULL ownership instead), so
+  // the canonical name is read from the server rather than migrated to.
+  const current = await engramFetch(
+    `/project/current?cwd=${encodeURIComponent(ctx.directory)}`
+  )
+  if (typeof current?.project === "string" && current.project) {
+    project = current.project
   }
 
   // Auto-import: if .engram/manifest.json exists in the project repo,

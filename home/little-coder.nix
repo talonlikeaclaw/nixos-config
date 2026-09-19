@@ -3,18 +3,18 @@
 let
   little-coder = pkgs.buildNpmPackage {
     pname = "little-coder";
-    version = "1.18.0";
+    version = "1.20.0";
 
     src = pkgs.fetchFromGitHub {
       owner = "itayinbarr";
       repo = "little-coder";
-      rev = "v1.18.0";
-      hash = "sha256-BQiBachtXL5ICQ/TsEaX91Bangh46lUqeuk2g5zJh1I=";
+      rev = "v1.20.0";
+      hash = "sha256-s7i52FF8pYE/8YLKtkWiCJNC12oqgeH2dhZEQr6jqoI=";
     };
 
     dontNpmBuild = true;
     npmDepsFetcherVersion = 2;
-    npmDepsHash = "sha256-AqMUcu5RoVeJiKXLJ20KGt36c9YLDnv8beshgcOyesw=";
+    npmDepsHash = "sha256-kjkWj5G8jV6n5s8t0688uuL3Nkai5Ss6ryfKUmJ26vA=";
 
     installPhase = ''
       runHook preInstall
