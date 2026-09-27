@@ -6,14 +6,14 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "Gentleman-Programming";
       repo = "engram";
-      rev = "v2.0.0";
-      hash = "sha256-d5bxn72roCafsnnRUZcwf66QcgZWXNdY/eqoqBP/W4s=";
+      rev = "v2.2.1";
+      hash = "sha256-unN6bMnxVJAq3S3DsJCq2rUUddycwkYHGFs92hc+tQU=";
     };
-    vendorHash = "sha256-tLWuHdnJgBSlzcyvXLzxtvzHSgoZqVXhmUjg2phBgYw=";
+    vendorHash = "sha256-roVQ+K9Hsz0qi61f+zzb+JvgleOmBHSMcKfhwhI0snQ=";
     ldflags = [
       "-s"
       "-w"
-      "-X main.version=v2.0.0"
+      "-X main.version=v2.2.1"
     ];
     subPackages = [ "cmd/engram" ];
     doCheck = false;

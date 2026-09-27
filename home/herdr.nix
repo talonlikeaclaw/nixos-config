@@ -35,8 +35,8 @@ in
       ]
     }:$PATH"
 
-    run ${herdrPackage}/bin/herdr plugin install smarzban/herdr-file-viewer --ref v1.14.0 --yes
-    run ${herdrPackage}/bin/herdr plugin install lmilojevicc/herdr-splits.nvim --ref v0.5.1 --yes
-    run ${herdrPackage}/bin/herdr plugin install fullerzz/herdr-plugin-sesh --ref v0.6.0 --yes
+    run ${herdrPackage}/bin/herdr plugin install smarzban/herdr-file-viewer --ref v1.17.0 --yes
+    run ${herdrPackage}/bin/herdr plugin install lmilojevicc/herdr-splits.nvim --ref v0.5.3 --yes
+    run ${herdrPackage}/bin/herdr plugin install fullerzz/herdr-plugin-sesh --ref v0.13.0 --yes
   '';
 }
