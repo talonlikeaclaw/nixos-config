@@ -37,6 +37,7 @@
       "docker"
     ];
     openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDWptDPym0svQ4tDAQAS9PEcbJol3D3gPS3tKvLjp5zH"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2Lj+2jCHag/Xk/do2laBTiGFxW6ilZ1XkYiPDSYFIw talonlikeaclaw@proton.me"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILnRJjVRxTLklHTulR9+ZxSvbNMERzoQuUdLCJmsXtHE talon@macbook"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHuakRF15pYHCmXHc9l0njV/sHZvEWaF2HaKbTBvcHN6 talon@termius"
@@ -65,6 +66,7 @@
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
+      AllowAgentForwarding = false;
       X11Forwarding = false;
       AcceptEnv = [
         "COLORTERM"
