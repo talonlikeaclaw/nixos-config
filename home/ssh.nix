@@ -18,8 +18,29 @@
         User = "git";
         IdentityFile = "~/.ssh/id_ed25519_gitlab";
       };
-      # Homelab: Proxmox node and service LXCs (.200-.252), root over the
-      # unified Vaultwarden key.
+      "truenas" = {
+        HostName = "truenas-scale";
+        User = "talon";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
+      "macbook" = {
+        HostName = "talons-macbook-pro";
+        User = "talon";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
+      "endeavouros" = {
+        User = "talon";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
+      "vps-mtl" = {
+        User = "talon";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
+      "proxmox" = {
+        HostName = "192.168.0.112";
+        User = "root";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
       "192.168.0.112" = {
         User = "root";
         IdentityFile = "~/.ssh/id_ed25519";
