@@ -96,11 +96,34 @@
 
   programs.ssh.startAgent = true;
 
-  # Run prebuilt dynamic binaries (codium-server downloaded by the
-  # open-remote-ssh VSCodium extension) on NixOS.
+  # Chromium deps for omp usage
   programs.nix-ld = {
     enable = true;
-    libraries = [ pkgs.icu ];
+    libraries = with pkgs; [
+      icu
+      alsa-lib
+      at-spi2-atk
+      at-spi2-core
+      atk
+      cairo
+      cups
+      dbus
+      expat
+      glib
+      libgbm
+      libX11
+      libxcb
+      libXcomposite
+      libXdamage
+      libXext
+      libXfixes
+      libXrandr
+      libxkbcommon
+      nspr
+      nss
+      pango
+      systemd
+    ];
   };
 
   # Limit journal size to prevent disk fill

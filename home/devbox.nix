@@ -50,6 +50,7 @@ in
     ansible
     bun
     cargo
+    chromium
     codex
     curl
     docker
