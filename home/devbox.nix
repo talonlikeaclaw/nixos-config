@@ -51,6 +51,7 @@ in
     bun
     cargo
     chromium
+    clippy
     codex
     curl
     docker
@@ -82,6 +83,7 @@ in
     python3Packages.debugpy
     ripgrep
     rustc
+    rustfmt
     sqlite
     shellcheck
     sesh
