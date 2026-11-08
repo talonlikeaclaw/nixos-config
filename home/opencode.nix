@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   xdg.configFile."opencode/config.json".text = builtins.toJSON {
@@ -68,15 +68,30 @@
 
   xdg.configFile."opencode/package.json".text = builtins.toJSON {
     dependencies = {
-      "@opencode-ai/plugin" = "1.18.32";
+      "@opencode-ai/plugin" = "1.19.5";
     };
   };
 
-  xdg.configFile."opencode/tui.json".text = builtins.toJSON {
-    plugin = [
-      "opencode-subagent-statusline"
-    ];
-  };
+  # OpenCode 2.x keeps TUI settings in cli.json and only migrates the legacy
+  # tui.json once. Herdr rewrites the TUI plugin list at activation time, so
+  # seed a writable regular file instead of linking a store path that Herdr
+  # refuses to edit.
+  home.activation.installOpencodeCliConfig = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    config="$HOME/.config/opencode/cli.json"
+
+    if [ ! -e "$config" ]; then
+      mkdir -p "$(dirname "$config")"
+      cat > "$config" <<'EOF'
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "plugins": [
+    "opencode-subagent-statusline"
+  ]
+}
+EOF
+      chmod u+w "$config"
+    fi
+  '';
 
   xdg.configFile."opencode-plugins-engram" = {
     target = "opencode/plugins/engram.ts";
@@ -92,7 +107,7 @@
     cd "$HOME/.config/opencode"
 
     if [ ! -f node_modules/@opencode-ai/plugin/package.json ] ||
-      [ "$(${pkgs.jq}/bin/jq -r .version node_modules/@opencode-ai/plugin/package.json)" != "1.18.32" ]; then
+      [ "$(${pkgs.jq}/bin/jq -r .version node_modules/@opencode-ai/plugin/package.json)" != "1.19.5" ]; then
       ${pkgs.bun}/bin/bun install
     fi
   '';
