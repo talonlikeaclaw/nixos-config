@@ -129,6 +129,10 @@
   # Limit journal size to prevent disk fill
   services.journald.settings.Journal.SystemMaxUse = "500M";
 
+  # Memory reclaim for the Proxmox host.
+  services.qemuGuest.enable = true;
+  zramSwap.enable = true;
+
   # NixOS Version
   system.stateVersion = "25.11";
 
