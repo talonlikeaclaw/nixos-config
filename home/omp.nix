@@ -1,7 +1,7 @@
 { dotfiles, lib, pkgs, ... }:
 
 let
-  version = "18.18.1";
+  version = "19.1.1";
 
   omp = pkgs.stdenvNoCC.mkDerivation {
     pname = "omp";
@@ -9,7 +9,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/can1357/oh-my-pi/releases/download/v${version}/omp-linux-x64";
-      hash = "sha256-KnXhZVBnZ4OzvIvg4GUTR43ViB78ZHlUZCqzDbj5vgY=";
+      hash = "sha256-BOlJD5OU2m1oBEdMwuQes9GPjiYhXfSzS91K1MDYpAE=";
     };
 
     dontUnpack = true;

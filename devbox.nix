@@ -15,6 +15,8 @@
 
   # Enable serial console for Proxmox VNC fallback
   boot.kernelParams = [ "console=ttyS0,115200n8" ];
+
+  systemd.services."serial-getty@ttyS0".enable = false;
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   networking.hostName = "devbox";
